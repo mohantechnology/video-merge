@@ -157,6 +157,7 @@ app.get('/', (req, res) => {
 
   // res.json( {status:"ok"  , message: req.body}); 
   // let token = "testfolder";
+  let token ; 
     if ( !(req.cookies && req.cookies.li)){
        token = uuidv4();
 
