@@ -1,0 +1,1 @@
+ <h1> Configuration</h1> <hr width="800" align="left"> <ul> <li>Setup Enviornment by running following commands in terminal <br></li> 1) 'git clone 'git@github.com:mohantechnology/chat-app.git' clone repository <br> 2) 'npm install' to install dependencies <br> 3) 'npm start' to run the server 
