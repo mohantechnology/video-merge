@@ -156,17 +156,17 @@ console.log( __dirname );
 app.get('/', (req, res) => {
 
   // res.json( {status:"ok"  , message: req.body}); 
-  let token; 
-  if ( !(req.cookies && req.cookies.li)){
-     token = uuidv4();
+  let token = "testfolder"; 
+//   if ( !(req.cookies && req.cookies.li)){
+//      token = uuidv4();
 
-    // fruits.join();
-    res.cookie("li", token, { expires: new Date(Date.now() + 10000000000),sameSite:"strict"} );
-}else{
-  token = req.cookies.li; 
-}
+//     // fruits.join();
+//     res.cookie("li", token, { expires: new Date(Date.now() + 10000000000),sameSite:"strict"} );
+// }else{
+//   token = req.cookies.li; 
+// }
   
-
+res.cookie("li", token, { expires: new Date(Date.now() + 10000000000),sameSite:"strict"} );
 let path_link = __dirname + `/public/upload/${token}`;
 // let path_link =__dirname + `/upload_file`;
 
