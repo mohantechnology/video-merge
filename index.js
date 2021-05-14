@@ -172,7 +172,7 @@ let path_link = __dirname + `/public/upload/${token}`;
 
 if (!fs.existsSync(__dirname + `/public`)) {
   console.log( "creating dir " + __dirname + `/public`)
-  fs.mkdirSync(path_link);
+  fs.mkdirSync(__dirname + `/public`);
 }
 else{
   console.log( "already created dir " + __dirname + `/public`)
@@ -181,7 +181,7 @@ else{
 
 
 if (!fs.existsSync(__dirname + `/public/upload`)) {
-  fs.mkdirSync(path_link);
+  fs.mkdirSync(__dirname + `/public/upload`);
   console.log( "creating dir " + __dirname + `/public/upload`)
 }else{
   console.log( "already created dir " +  __dirname + `/public/upload`)
