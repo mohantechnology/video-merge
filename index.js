@@ -82,7 +82,7 @@ function pr(r1, r2, r3, r4) {
 //   console.log(duration, 'ms') ;
 // })
 
- 
+
 
 
 
@@ -133,67 +133,67 @@ app.get('/down/:file_path', (req, res) => {
 
   // res.json( {status:"ok"  , message: req.body}); 
 
-  
-  
-  if ((!req.params.file_path)  || !(req.cookies.li)) {
+
+
+  if ((!req.params.file_path) || !(req.cookies.li)) {
     return res.json({ status: "error", message: "Missing data" });
-    
+
   }
-  let file_path = __dirname + "/public/upload/"+ req.cookies.li+ "/" + req.params.file_path ; 
-console.log(file_path); 
+  let file_path = __dirname + "/public/upload/" + req.cookies.li + "/" + req.params.file_path;
+  console.log(file_path);
   if (!fs.existsSync(file_path)) {
     return res.json({ status: "error", message: "File Not Found" });
 
-} 
+  }
   res.download(file_path)
 });
 
 
-console.log( __dirname + `/public/upload/${3434}`); 
-console.log( __dirname ); 
+// console.log(__dirname + `/public/upload/${3434}`);
+console.log(__dirname);
 
 
 app.get('/', (req, res) => {
 
   // res.json( {status:"ok"  , message: req.body}); 
-  let token = "testfolder"; 
-//   if ( !(req.cookies && req.cookies.li)){
-//      token = uuidv4();
+  // let token = "testfolder";
+    if ( !(req.cookies && req.cookies.li)){
+       token = uuidv4();
 
-//     // fruits.join();
-//     res.cookie("li", token, { expires: new Date(Date.now() + 10000000000),sameSite:"strict"} );
-// }else{
-//   token = req.cookies.li; 
-// }
-  
-res.cookie("li", token, { expires: new Date(Date.now() + 10000000000),sameSite:"strict"} );
-let path_link = __dirname + `/public/upload/${token}`;
-// let path_link =__dirname + `/upload_file`;
+      // fruits.join();
+      res.cookie("li", token, { expires: new Date(Date.now() + 10000000000),sameSite:"strict"} );
+  }else{
+    token = req.cookies.li; 
+  }
 
-if (!fs.existsSync(__dirname + `/public`)) {
-  console.log( "creating dir " + __dirname + `/public`)
-  fs.mkdirSync(__dirname + `/public`);
-}
-else{
-  console.log( "already created dir " + __dirname + `/public`)
-}
+  res.cookie("li", token, { expires: new Date(Date.now() + 10000000000), sameSite: "strict" });
+  let path_link = __dirname + `/public/upload/${token}`;
+  // let path_link =__dirname + `/upload_file`;
+
+  if (!fs.existsSync(__dirname + `/public`)) {
+    console.log("creating dir " + __dirname + `/public`)
+    fs.mkdirSync(__dirname + `/public`);
+  }
+  else {
+    console.log("already created dir " + __dirname + `/public`)
+  }
 
 
 
-if (!fs.existsSync(__dirname + `/public/upload`)) {
-  fs.mkdirSync(__dirname + `/public/upload`);
-  console.log( "creating dir " + __dirname + `/public/upload`)
-}else{
-  console.log( "already created dir " +  __dirname + `/public/upload`)
-}
+  if (!fs.existsSync(__dirname + `/public/upload`)) {
+    fs.mkdirSync(__dirname + `/public/upload`);
+    console.log("creating dir " + __dirname + `/public/upload`)
+  } else {
+    console.log("already created dir " + __dirname + `/public/upload`)
+  }
 
-if (!fs.existsSync(path_link)) {
-  fs.mkdirSync(path_link);
-  console.log( "creating dir " + path_link)
-}
-else{
-  console.log( "already created dir " + path_link)
-}
+  if (!fs.existsSync(path_link)) {
+    fs.mkdirSync(path_link);
+    console.log("creating dir " + path_link)
+  }
+  else {
+    console.log("already created dir " + path_link)
+  }
 
 
   res.sendFile(__dirname + "/index.html")
@@ -203,16 +203,16 @@ else{
 
 app.post('/txt_to_voice', (req, res) => {
 
-  req.body.token = req.cookies.li; 
+  req.body.token = req.cookies.li;
   txt_to_voice(req.body)
-  .then(data=>{
-    console.log(data);
-       res.json(data)
-  })
-  .catch(err=>{
-    console.log(err);
-    res.status(500).json(err)
-  })
+    .then(data => {
+      console.log(data);
+      res.json(data)
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err)
+    })
 
 });
 
@@ -221,19 +221,19 @@ app.post('/txt_to_voice', (req, res) => {
 
 app.post('/merge_img_aud', (req, res) => {
 
-  req.body.token = req.cookies.li; 
-  console.log( "body-0--- start") ; 
-  console.log(   req.body); 
-  console.log( "body-0---end ") ;
+  req.body.token = req.cookies.li;
+  console.log("body-0--- start");
+  console.log(req.body);
+  console.log("body-0---end ");
   merge_img_aud(req.body)
-  .then(data=>{
-    console.log(data);
-       res.json(data)
-  })
-  .catch(err=>{
-    console.log(err);
-    res.status(500).json(err)
-  })
+    .then(data => {
+      console.log(data);
+      res.json(data)
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err)
+    })
 
 });
 
@@ -244,19 +244,19 @@ app.post('/merge_img_aud', (req, res) => {
 
 app.post('/merge_vid_aud', (req, res) => {
 
-  req.body.token = req.cookies.li; 
-  console.log( "body-0--- start") ; 
-  console.log(   req.body); 
-  console.log( "body-0---end ") ;
+  req.body.token = req.cookies.li;
+  console.log("body-0--- start");
+  console.log(req.body);
+  console.log("body-0---end ");
   merge_vid_aud(req.body)
-  .then(data=>{
-    console.log(data);
-       res.json(data)
-  })
-  .catch(err=>{
-    console.log(err);
-    res.status(500).json(err)
-  })
+    .then(data => {
+      console.log(data);
+      res.json(data)
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err)
+    })
 
 });
 
@@ -267,19 +267,19 @@ app.post('/merge_vid_aud', (req, res) => {
 
 app.post('/conv_mp4_ts', (req, res) => {
 
-  req.body.token = req.cookies.li; 
-  console.log( "body-0--- start") ; 
-  console.log(   req.body); 
-  console.log( "body-0---end ") ;
+  req.body.token = req.cookies.li;
+  console.log("body-0--- start");
+  console.log(req.body);
+  console.log("body-0---end ");
   conv_mp4_ts(req.body)
-  .then(data=>{
-    console.log(data);
-       res.json(data)
-  })
-  .catch(err=>{
-    console.log(err);
-    res.status(500).json(err)
-  })
+    .then(data => {
+      console.log(data);
+      res.json(data)
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err)
+    })
 
 });
 
@@ -290,19 +290,19 @@ app.post('/conv_mp4_ts', (req, res) => {
 
 app.post('/merge_all', (req, res) => {
 
-  req.body.token = req.cookies.li; 
-  console.log( "body-0--- start") ; 
-  console.log(   req.body); 
-  console.log( "body-0---end ") ;
+  req.body.token = req.cookies.li;
+  console.log("body-0--- start");
+  console.log(req.body);
+  console.log("body-0---end ");
   merge_all(req.body)
-  .then(data=>{
-    console.log(data);
-       res.json(data)
-  })
-  .catch(err=>{
-    console.log(err);
-    res.status(500).json(err)
-  })
+    .then(data => {
+      console.log(data);
+      res.json(data)
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err)
+    })
 
 });
 
@@ -317,10 +317,10 @@ app.post('/merge_all', (req, res) => {
 
 app.get('/cook', (req, res) => {
 
-  res.json( {status:"ok"  , message: req.cookies}); 
-// let token = "13434434"; 
-//   res.cookie("li", token, { expires: new Date(Date.now() + 6000000),sameSite:"strict"} );
-//   res.sendFile(__dirname + "/index.html")
+  res.json({ status: "ok", message: req.cookies });
+  // let token = "13434434"; 
+  //   res.cookie("li", token, { expires: new Date(Date.now() + 6000000),sameSite:"strict"} );
+  //   res.sendFile(__dirname + "/index.html")
 });
 
 
@@ -336,42 +336,42 @@ app.post('/upload', (req, res) => {
   // if file is present then  update the file in database also and delete prev file 
   if (req.files && req.files.upload_file) {
 
-console.log(  req.body ) ;
-console.log(  req.params ) ;
-console.log(  req.files ) ;
-console.log(req.query);
-// return; 
-req.params.f_id= req.query.f_id; 
-console.log(req.params);
+    console.log(req.body);
+    console.log(req.params);
+    console.log(req.files);
+    console.log(req.query);
+    // return; 
+    req.params.f_id = req.query.f_id;
+    console.log(req.params);
     // res.send({status:"ok",file_link: r_data.curr_file_name,file_name:r_data.file_name,mime_type:sampleFile.mimetype,folder_name: r_data.folder_name }); 
 
-  //check cookie to create folder 
+    //check cookie to create folder 
 
-  let token; 
+    let token;
 
-  if ( !(req.cookies && req.cookies.li)){
-    // res.redirect(__dirname +   "/index.html")
-    res.json( {status:"error"  , message: "Not a valid request try reloading" }); 
-}else{
-    token = req.cookies.li
-}
+    if (!(req.cookies && req.cookies.li)) {
+      // res.redirect(__dirname +   "/index.html")
+      res.json({ status: "error", message: "Not a valid request try reloading" });
+    } else {
+      token = req.cookies.li
+    }
 
 
-// if ( !( req.params.f_id )){
-//   res.json( {status:"error"  , message: "Not a valid file" }); 
-// }
+    // if ( !( req.params.f_id )){
+    //   res.json( {status:"error"  , message: "Not a valid file" }); 
+    // }
 
 
 
     let sampleFile = req.files.upload_file;
-    
-    let s_arr = basename(sampleFile.name).split('.'); 
-   let extn =  s_arr[s_arr.length-1]; 
-   
-   let org_name = req.params.f_id  +"."+  extn   ;
+
+    let s_arr = basename(sampleFile.name).split('.');
+    let extn = s_arr[s_arr.length - 1];
+
+    let org_name = req.params.f_id + "." + extn;
 
 
-console.log( "splitted file ext "); 
+    console.log("splitted file ext ");
 
 
     //create folder if not exist 
@@ -379,20 +379,20 @@ console.log( "splitted file ext ");
     // let path_link =__dirname + `/upload_file`;
 
     if (!fs.existsSync(__dirname + `/public`)) {
-      console.log( "creating dir " + __dirname + `/public`)
+      console.log("creating dir " + __dirname + `/public`)
       fs.mkdirSync(__dirname + `/public`);
     }
     if (!fs.existsSync(__dirname + `/public/upload`)) {
       fs.mkdirSync(__dirname + `/public/upload`);
-      console.log( "creating dir " + __dirname + `/public/upload`)
+      console.log("creating dir " + __dirname + `/public/upload`)
     }
 
     if (!fs.existsSync(path_link)) {
       fs.mkdirSync(path_link);
-      console.log( "creating dir " + path_link)
+      console.log("creating dir " + path_link)
     }
-    else{
-      console.log( "already created dir " + path_link)
+    else {
+      console.log("already created dir " + path_link)
     }
     sampleFile.mv(path_link + "/" + org_name, function (err) {
       if (err) {
@@ -425,16 +425,16 @@ app.post('/up', (req, res) => {
 
 
     let sampleFile = req.files.upload_file;
-    
-    let s_arr = basename(sampleFile.name).split('.'); 
-   let extn =  s_arr[s_arr.length-1]; 
-   
-   let org_name = req.params.f_id  +"."+  extn   ;
+
+    let s_arr = basename(sampleFile.name).split('.');
+    let extn = s_arr[s_arr.length - 1];
+
+    let org_name = req.params.f_id + "." + extn;
 
 
     let path_link = __dirname + `/public/upload`;
     // let path_link =__dirname + `/upload_file`;
-    console.log( "path is  ")
+    console.log("path is  ")
 
     sampleFile.mv(path_link + "/" + org_name, function (err) {
       if (err) {
@@ -442,7 +442,7 @@ app.post('/up', (req, res) => {
         res.json({ status: "error", message: err.message });
       }
       else {
-        res.json({ status: "ok", file_link:  "/" + org_name });
+        res.json({ status: "ok", file_link: "/" + org_name });
       }
 
     });
@@ -452,7 +452,7 @@ app.post('/up', (req, res) => {
     res.json({ status: "error", message: "File is not sended successfully" });
   }
 
-}); 
+});
 
 
 
@@ -474,7 +474,7 @@ app.get('/comp/:name', (req, res) => {
       caption: req.params.name,
       loop: 3
     }
-  
+
   ];
 
 
@@ -644,7 +644,7 @@ app.get('/exe', (req, res) => {
     console.log('Child Process STDERR: ' + stderr);
     res.write('<h1>' + " Signal received: " + stdout + '</h1>');
     // res.end();
-  }); 
+  });
 
   ls.on('exit', function (code) {
     console.log('Child process exited with exit code ' + code);
@@ -1214,11 +1214,11 @@ app.get('/download/:folder/:file/:file_name?', function (req, res) {
 
 /*
 
-create a sample layout for  user interaction 
+create a sample layout for  user interaction
 
-user's  can add  img and transcript and convert to video 
-user's  can add video  and transcript  and  convert to video with merge audio 
-user's  can merge all uploaded  convert video to one single video 
+user's  can add  img and transcript and convert to video
+user's  can add video  and transcript  and  convert to video with merge audio
+user's  can merge all uploaded  convert video to one single video
 
-user's  can preview the final video  
+user's  can preview the final video
 */
