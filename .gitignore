@@ -1,0 +1,9 @@
+node_modules/
+images/
+**/logs
+myfile/
+myfile2/
+mailjet/
+temp.js
+temp.html
+temp.*
