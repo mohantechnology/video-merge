@@ -6,12 +6,12 @@
  A simple image presentation  maker  (Not fully completed ) 
  
  1) upload image  with  'upload image button'  
- 2) upload .txt file contain a sentence that you want in the image video   with 'upload transcript button' 
+ 2) upload .txt file contain a sentence that we want in the image video   with 'upload transcript button' 
  3) create audio from text  
- 4) then click on 'merge image+audio'  button to merge  your image and sentence . The output will be a video with image and voice
+ 4) then click on 'merge image+audio'  button to merge  our  image and sentence . The output will be a video with image and voice
  
  5 ) similarly add multiple image and convert into video of each image 
  
- 6) same for add video you can add video  replace it with uploaded transcript 
+ 6) same for add video we can add video  replace it with uploaded transcript 
 
  7) finally merge all to make a single video and it will download automatically ( work in chrome , mozilla sometime blocks automatically downloads ) 
